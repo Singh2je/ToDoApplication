@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>To Do Application </title>
+    <title>To Do Application</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -13,33 +13,38 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav class="navbar bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand">To Do List Application </a>
-            <form class="d-flex" role="search" action="#" th:action="@{/search}" method="GET">>
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchTerm" id="searchTerm">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
-    </nav> <br>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">To Do List Application</a>
+        <form class="d-flex" role="search" action="#" th:action="@{/search}" method="GET">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchTerm" id="searchTerm">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+<br>
 
+<div class="container">
     <p th:text="${task}"/>
 
-<form action="#" th:action="@{/saveTask}" th:object="${task}" method="GET">
+    <form action="#" th:action="@{/saveTask}" th:object="${task}" method="GET">
 
-    <div class="input-group input-group-sm mb-3">
-        <span class="input-group-text" id="taskId">Task Id</span>
-        <input type="text" class="form-control" aria-label="Sizing example input"
-               aria-describedby="inputGroup-sizing-sm" th:type="text" name="TasKId" th:field="*{taskId}">
-    </div>
+        <div class="mb-3">
+            <label for="taskId" class="form-label">Task Id</label>
+            <input type="text" class="form-control" id="taskId" aria-describedby="taskIdHelp"
+                   th:type="text" name="taskId" th:field="*{taskId}">
+            <div id="taskIdHelp" class="form-text">Enter the task id</div>
+        </div>
 
-    <div class="input-group input-group-sm mb-3">
-        <span class="input-group-text" id="taskText">Task Text</span>
-        <input type="text" class="form-control" aria-label="Sizing example input"
-               aria-describedby="inputGroup-sizing-sm" th:type="text" name="TaskText" th:field="*{TaskText}">
-    </div>
+        <div class="mb-3">
+            <label for="taskText" class="form-label">Task Text</label>
+            <input type="text" class="form-control" id="taskText" aria-describedby="taskTextHelp"
+                   th:type="text" name="taskText" th:field="*{taskText}">
+            <div id="taskTextHelp" class="form-text">Enter the task text</div>
+        </div>
 
-    <button name="submit" type="submit" value="0">Submit</button>
-</form>
+        <button name="submit" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
 </body>
 </html>
